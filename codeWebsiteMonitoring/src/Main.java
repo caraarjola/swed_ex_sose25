@@ -1,9 +1,13 @@
 public class Main {
-    public static void main(String[] args) {
-        User firstuser= new User("arjola",1000,"arjola.cara@web.de","01345434");
-        Website web1= new Website(1, "spotify.com");
-        Subscriptions  sub1= new Subscriptions(1000, firstuser,web1,Frequency.daily,CommunicationChannel.email);
-        firstuser.registerSubscription(sub1);
-        System.out.println(web1.getWebsiteUrl());
+   public static void main(String[] args) {
+        User user = new User("Ichika", 1, "ichika@example.com", "123456");
+        Observer observer = new NotificationService();
+
+        user.registerObserver(observer);
+
+        Website website = new Website(1, "https://spotify.com");
+        Subscription sub = new Subscription(1000, user, website, Frequency.daily, CommunicationChannel.email);
+
+        user.addSubscription(sub);  //automatisch benachrichtig
     }
 }

@@ -8,7 +8,9 @@ public class Notification {
         this.notId = notId;
         this.timeStamp = timeStamp;
     }
-    public void sendMessage(User user,CommunicationChannel communicationChannel) {
-        System.out.println("sendMessage" + user +"via"+ communicationChannel);
+
+    public void sendMessage(User user, CommunicationChannel communicationChannel) {
+        System.out.println("sendMessage to " + user.getName() + " via " + communicationChannel);
+        System.out.println("Message: " + message + " @ " + timeStamp);
     }
 }
