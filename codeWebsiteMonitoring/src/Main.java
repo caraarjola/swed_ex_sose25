@@ -11,8 +11,10 @@ public class Main {
         // user.addSubscription(sub);  //automatisch benachrichtig
 
         Website w1 = new Website(1, "http://stackoverflow.com");
-        Website w2 = new Website(2, "http://google.com");
-
+        Website w2 = new Website(2, "http://stackoverflow.com");
+        
+        // Website w1 = new Website(1, "http://google.com");
+        // Website w2 = new Website(2, "http://stackoverflow.com");
         WebsiteComparer comparer = new WebsiteComparer(new HtmlComparisonStrategy());
 
         boolean result = comparer.compare(w1, w2);
