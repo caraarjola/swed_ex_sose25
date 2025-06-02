@@ -10,17 +10,23 @@ public class Main {
 
         // user.addSubscription(sub);  //automatisch benachrichtig
 
-        Website w1 = new Website(1, "http://example.com/page1");
-        Website w2 = new Website(2, "http://example.com/page2");
+        Website w1 = new Website(1, "http://stackoverflow.com");
+        Website w2 = new Website(2, "http://google.com");
 
         WebsiteComparer comparer = new WebsiteComparer(new HtmlComparisonStrategy());
 
-        //boolean result = comparer.compare(w1, w2);
-        //System.out.println("Vergleichsergebnis: " + result);
-        if (comparer.compare(w1, w2)) {
-            System.out.println("Webseiten sind gleich!");
-        } else {
-            System.out.println("Webseiten unterscheiden sich!");
-        }       
+        boolean result = comparer.compare(w1, w2);
+        System.out.println("Vergleichsergebnis: " + result);
+
+        WebsiteComparer comparer2 = new WebsiteComparer(new SizeComparisonStrategy());
+
+        boolean result2 = comparer2.compare(w1, w2);
+        System.out.println("Sind die HTML-Größen identisch? " + result2);
+
+
+        WebsiteComparer comparer3 = new WebsiteComparer(new TextComparisonStrategy());
+        boolean textResult = comparer3.compare(w1, w2);
+        System.out.println("Sichtbarer Text gleich? " + textResult);
+        
     }
 }
