@@ -36,10 +36,11 @@ public class Main {
 
         Subscription s = new Subscription(1, user, site, Frequency.daily, CommunicationChannel.email);
         user.addSubscription(s);
+        
+        WebsiteComparer strategy = new WebsiteComparer(new HtmlComparisonStrategy());
+        WebsiteComparer strategy2= new WebsiteComparer(new SizeComparisonStrategy());
+        WebsiteComparer strategy3= new WebsiteComparer(new TextComparisonStrategy());
 
-        ComparisonStrategy strategy = new HtmlComparisonStrategy();
-        ComparisonStrategy strategy2 = new SizeComparisonStrategy();
-        ComparisonStrategy strategy3 = new TextComparisonStrategy();
         WebsiteMonitorService monitor = new WebsiteMonitorService(strategy);
         WebsiteMonitorService monitor2 = new WebsiteMonitorService(strategy2);
         WebsiteMonitorService monitor3 = new WebsiteMonitorService(strategy3);

@@ -4,12 +4,13 @@ public class WebsiteMonitorService {
     private WebsiteComparer comparer;
     private NotificationService notificationService;
 
-    public WebsiteMonitorService(ComparisonStrategy strategy) {
-        this.comparer = new WebsiteComparer(strategy);
+    public WebsiteMonitorService(WebsiteComparer comparer) {
+        this.comparer = comparer;
         this.notificationService = new NotificationService();
     }
 
     public void checkSubscriptions(List<Subscription> subscriptions) {
+        
         for (Subscription sub : subscriptions) {
             Website w1 = sub.getWebsite(); // Aktuelle Website
             Website snapshot = new Website(-1, w1.getWebsiteUrl()); // Dummy-Kopie mit gleichem URL
