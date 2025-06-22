@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.net.URL;
+
+
 
 public class HtmlComparisonStrategy implements ComparisonStrategy {
     //nach html vergleichen
@@ -18,9 +21,10 @@ public class HtmlComparisonStrategy implements ComparisonStrategy {
     }
 
     private String getHtml(String urlString) throws Exception {
-        URL url = new URL (urlString);
-        BufferedReader in = new BufferedReader(
-            new InputStreamReader(url.openStream()));
+        URI uri = URI.create(urlString);
+        URL url = uri.toURL();
+        BufferedReader in = new BufferedReader(    //macht das Einlesen effizienter, zeilenweise Lesen
+            new InputStreamReader(url.openStream())); //wandelt die Bytes in Text um
 
         StringBuilder html = new StringBuilder();
         String line;
